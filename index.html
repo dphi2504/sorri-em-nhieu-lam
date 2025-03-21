@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Bbi</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+            font-size: 50px; /* Chữ lớn, dễ đọc */
+            background: #A7C7E7; /* Màu pastel xanh dương nhẹ nhàng */
+            color: #333; /* Màu chữ tối hơn để dễ nhìn */
+            font-family: 'Poppins', sans-serif; /* Font chữ đơn giản, rõ ràng */
+            font-weight: bold;
+            user-select: none;
+            padding: 40px;
+            width: 90%;
+            max-width: 900px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        #text {
+            position: absolute;
+            opacity: 1;
+            transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
+        }
+
+        .fade-out {
+            transform: translateY(-50px);
+            opacity: 0;
+        }
+
+        .fade-in {
+            transform: translateY(50px);
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div id="text">Chào em, bbi</div>
+
+    <script>
+        const texts = [
+            "Chào em, bbi",
+            "Em biết không...",
+            "Cứ mỗi lần anh thấy mình ngu lắm rồi ấy",
+            "thì anh lại phát hiện ra một cái ngu mới của bản thân",
+            "nghe tệ nhỉ:((",
+            "anh đã nhận ra anh sai ở đâu rồi TT",
+            "Anh nhớ em lắm, anh xin lỗi bbi của anh nhiều",
+            "Chúc em một ngày yên bình nhé, anh yêu em nhiều <3"
+        ];
+
+        let index = 0;
+        const textElement = document.getElementById("text");
+
+        document.body.addEventListener("click", () => {
+            textElement.classList.add("fade-out"); // Chữ bay lên trước khi đổi
+
+            setTimeout(() => {
+                index = (index + 1) % texts.length;
+                textElement.innerText = texts[index];
+                textElement.classList.remove("fade-out");
+                textElement.classList.add("fade-in");
+
+                setTimeout(() => {
+                    textElement.classList.remove("fade-in");
+                }, 500);
+            }, 500);
+        });
+    </script>
+</body>
+</html>
